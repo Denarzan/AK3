@@ -3,12 +3,10 @@
  */
 MEMORY
 {
-    FLASH ( rx )      : ORIGIN = 0x08000000, LENGTH = 1M
     RAM ( rxw )       : ORIGIN = 0x20000000, LENGTH = 128K
 }
 __stack_start = ORIGIN(RAM) + LENGTH(RAM);
-_ram_start = ORIGIN(RAM);
-_ram_end = ORIGIN(RAM) + LENGTH(RAM);
+
 SECTIONS
 {
     .text :
@@ -20,5 +18,5 @@ SECTIONS
         *(.rodata)
         *(.rodata*)
         . = ALIGN(4);
-    } > FLASH
+    } > RAM
 }
